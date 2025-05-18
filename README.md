@@ -1,3 +1,14 @@
+
+to do 
+- [ ] add basic formatting:
+  - [ ] colours
+  - [ ] links/nav
+- [ ] add header component 
+- [ ] footer content
+- [ ] page elements (title/quote/banner/text sections)
+
+
+
 This is a next app I was making...
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
