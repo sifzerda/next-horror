@@ -9,7 +9,7 @@ function Navigation() {
         sm:pl-64
       "
     >
-      <ul className="flex flex-wrap gap-4 justify-center sm:justify-start">
+      <ul className="flex flex-wrap gap-4 justify-center">
         <li>
           <Link href="/" className="hover:text-gray-400">Home</Link>
         </li>

@@ -5,14 +5,18 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
-      <Navigation /> {/* Always at top */}
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+      <Navigation /> {/* fixed height at top */}
 
-      <div className="pt-16 sm:pl-64">
-        {/* Sidebar - full width block on mobile, fixed left on desktop */}
-        <Sidebar />
+      {/* Main content wrapper */}
+      <div className="flex flex-col sm:flex-row pt-16">
+        {/* Sidebar with natural height */}
+        <aside className="w-full sm:w-64 bg-gray-100 dark:bg-gray-900 p-6">
+          <Sidebar />
+        </aside>
 
-        <main className="pt-4 px-4 sm:px-6 flex flex-col gap-8 items-center sm:items-start">
+        {/* Main content grows */}
+        <main className="flex-1 p-4 sm:px-6 flex flex-col gap-8 items-center sm:items-start">
           <Image
             className="dark:invert"
             src="/next.svg"
@@ -59,9 +63,10 @@ export default function Home() {
             </a>
           </div>
         </main>
-
-        <Footer />
       </div>
+
+      {/* Footer below sidebar and main content */}
+      <Footer />
     </div>
   );
 }
