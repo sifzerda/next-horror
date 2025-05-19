@@ -15,12 +15,14 @@ export default function Login() {
 
     const res = await fetch('/api/login', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' }, // <-- Add this to ensure JSON is parsed properly on server
       body: JSON.stringify({ email, password }),
     });
 
     const data = await res.json();
 
     if (res.ok) {
+      localStorage.setItem('token', data.token); // <-- Store token here
       setMessage('Login successful!');
       window.location.href = '/'; // Redirect to home page
     } else {

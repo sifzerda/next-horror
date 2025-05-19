@@ -20,11 +20,10 @@ export async function POST(req) {
 
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
 
-    // Set token as HttpOnly cookie
-    return new Response(JSON.stringify({ message: 'Login successful' }), {
+    // Send token in JSON response (for localStorage)
+    return new Response(JSON.stringify({ token }), {
       status: 200,
       headers: {
-        'Set-Cookie': `token=${token}; HttpOnly; Path=/; Max-Age=3600; Secure; SameSite=Strict`,
         'Content-Type': 'application/json',
       },
     });
