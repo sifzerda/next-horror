@@ -13,6 +13,10 @@ to do
 
 
 
+
+
+
+
 using vercel neon db
 
 HTML
@@ -145,18 +149,67 @@ To link between pages use next's in-built <Link /> component. Import Link into y
 ## TO SET UP A DB
 
 Next.js can work serverless (it has built-in next-start server support). Vercel provides dbs: 
-(1) first deploy on Vercel;
-(2) Navigate to your app's dashboard;
-(3) Navigate to 'storage' tab and choose a db (e.g. Neon Vercel Postgres);
-(4) Once db is connected, 'show secret' under .env.local and 'copy snippet';
-(5) Paste this into an .env file in your code editor
-(6) in code editor terminal run:
-
+1. first deploy on Vercel (do not have to first do this);
+2. Navigate to your app's dashboard;
+3. Navigate to 'storage' tab and choose a db (e.g. Neon Vercel Postgres);
+4. Once db is connected, 'show secret' under .env.local and 'copy snippet';
+5. Paste this into an .env file in your code editor
+6. in code editor terminal run:
 ```bash
 npm i @vercel/postgres
 ```
-
 to install the Vercel Postgres SDK.
+
+7. go to vercel dashboard, under 'storage' select and create a db. e.g. neon postgres serverless. 
+8. copy the connection string info and paste into an .env in your root folder of app
+9. 
+```bash
+npm install prisma @prisma/client
+npx prisma init
+```
+this will create a root folder called prisma containing a schema.prisma file
+10. Update your prisma schema with any models you want to create e.g.
+```bash
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  createdAt DateTime @default(now())
+}
+```
+then run 
+```bash
+npx prisma db push
+```
+install 
+```bash
+npm install @prisma/client
+```
+11. Create a root folder called lib, and make a prisma.js file inside. Paste:
+```bash
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis;
+
+export const prisma = globalForPrisma.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+
+```
+12. If routes or pages enter data into or from the db, you need to import prisma into the page, e.g.
+```bash
+import { prisma } from '../lib/prisma';
+```
+alter pathname to where your lib folder is.
 
 ## TO DEPLOY
 
