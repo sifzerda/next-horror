@@ -1,4 +1,4 @@
-// src/pages/contact.js
+// src/app/contact.js
 import Layout from '../../components/Layout';
 
 function Contact() {

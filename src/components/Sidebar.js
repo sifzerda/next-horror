@@ -12,7 +12,7 @@ function Sidebar() {
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
     { href: '/references', label: 'References' },
-        { href: '/scary words', label: 'Scary Words' },
+    { href: '/scarywords', label: 'Scary Words' },
     { href: '/techniques', label: 'Techniques' },
     { href: '/tropes', label: 'Tropes' },
     { href: '/types', label: 'Types' },
@@ -23,7 +23,7 @@ function Sidebar() {
       role="complementary"
       className="w-full bg-gray-800 text-white p-4 z-10 flex flex-col items-center gap-4 sm:w-64 sm:h-screen sm:fixed sm:top-0 sm:left-0 sm:items-start sm:pt-28">
       <nav className="w-full">
-        <ul className="flex flex-col items-center gap-4 sm:items-start sm:pl-6">
+        <ul className="flex flex-col items-center gap-4 sm:items-start sm:pl-6 sm:mt-6">
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link

@@ -11,6 +11,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'amatic-sc': ['var(--font-amatic-sc)', 'cursive'],
+      },
     },
   },
   plugins: [],

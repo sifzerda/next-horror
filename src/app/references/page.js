@@ -1,4 +1,4 @@
-// src/pages/references.js
+// src/app/references.js
 import Layout from '../../components/Layout';
 
 function References() {

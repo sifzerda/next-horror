@@ -1,4 +1,4 @@
-// src/pages/scary words.js
+// src/app/scary words.js
 import Layout from '../../components/Layout';
 
 function Tropes() {
