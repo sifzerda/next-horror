@@ -49,11 +49,31 @@ function Techniques() {
         </div>
 
         {/* Vertical Boxes on the Right */}
-        <div className="flex flex-col gap-2">
-          <div className="w-24 h-20 bg-white text-black flex items-center justify-center rounded shadow">Box 1</div>
-          <div className="w-24 h-20 bg-white text-black flex items-center justify-center rounded shadow">Box 2</div>
-          <div className="w-24 h-20 bg-white text-black flex items-center justify-center rounded shadow">Box 3</div>
-        </div>
+<div className="flex flex-col gap-4">
+  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
+    <div className="font-semibold mb-1">About</div>
+    <p className="text-xs mt-1">Learn more about our story and mission.</p>
+  </div>
+
+  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
+    <div className="font-semibold mb-1">Index</div>
+    <ul className="flex flex-col list-disc list-inside text-xs leading-tight">
+      <li className="mb-px">Home</li>
+      <li className="mb-px">Blog</li>
+      <li className="mb-px">Contact</li>
+    </ul>
+  </div>
+
+  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
+    <div className="font-semibold mb-1">Also See</div>
+    <ul className="flex flex-col list-disc list-inside text-xs leading-tight">
+      <li className="mb-px">Resources</li>
+      <li className="mb-px">FAQ</li>
+      <li className="mb-px">Support</li>
+    </ul>
+  </div>
+</div>
+
       </section>
 
     </Layout>
