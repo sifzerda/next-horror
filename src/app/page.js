@@ -55,7 +55,7 @@ function Home() {
           </p>
 
           <p className="text-sm mb-4 font-rubik">
-            Special storytelling rules apply, which are covered in this blog. I hope you find it useful!
+           Special storytelling rules apply to horror, which are covered in this blog. I hope you find it useful!
           </p>
 
           <h2 id="blog">Blog</h2>

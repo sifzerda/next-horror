@@ -24,9 +24,8 @@ function Navigation() {
           <li key={href}>
             <Link
               href={href}
-              className={`border border-borderblue px-1 py-1 rounded hover:text-gray-400 hover:border-gray-400 transition ${
-                pathname === href ? 'underline font-semibold' : ''
-              }`}>
+              className={`border border-borderblue px-1 py-1 rounded hover:text-gray-400 hover:border-gray-400 transition ${pathname === href ? 'underline font-semibold' : ''
+                }`}>
               {label}
             </Link>
           </li>
