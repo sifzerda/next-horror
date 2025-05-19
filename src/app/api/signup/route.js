@@ -1,36 +1,54 @@
 import bcrypt from 'bcrypt';
+import { prisma } from '../../../../lib/prisma';
 
-const users = {}; // This should be moved to a DB in real use
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
+}
 
 export async function POST(req) {
   try {
     const { email, password } = await req.json();
 
     if (!email || !password) {
-      return new Response(JSON.stringify({ error: 'Email and password are required' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return jsonResponse({ error: 'Email and password are required' }, 400);
     }
 
-    if (users[email]) {
-      return new Response(JSON.stringify({ error: 'User already exists' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return jsonResponse({ error: 'Invalid email format' }, 400);
     }
 
+    if (password.length < 8) {
+      return jsonResponse({ error: 'Password must be at least 8 characters' }, 400);
+    }
+
+    // 🔍 Check if user already exists in the database
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return jsonResponse({ error: 'User already exists' }, 400);
+    }
+
+    // 🔐 Hash the password and store new user
     const hashedPassword = await bcrypt.hash(password, 10);
-    users[email] = { email, password: hashedPassword };
 
-    return new Response(JSON.stringify({ message: 'User created successfully' }), {
-      status: 201,
-      headers: { 'Content-Type': 'application/json' },
+    await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+      },
     });
+
+    return jsonResponse({ message: 'User created successfully' }, 201);
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Signup error:', error);
+    return jsonResponse({ error: 'Internal server error' }, 500);
   }
 }

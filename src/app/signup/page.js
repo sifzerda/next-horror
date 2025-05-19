@@ -1,4 +1,4 @@
-// src/app/signup.js
+// src/app/signup/page.js
 'use client';
 
 import { useState } from 'react';
