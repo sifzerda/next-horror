@@ -8,14 +8,12 @@ function Sidebar() {
   const pathname = usePathname();
 
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/references', label: 'References' },
-    { href: '/scarywords', label: 'Scary Words' },
+    { href: '/genre', label: 'Genre' },
+    { href: '/types', label: 'Types' },
     { href: '/techniques', label: 'Techniques' },
     { href: '/tropes', label: 'Tropes' },
-    { href: '/types', label: 'Types' },
+    { href: '/scarywords', label: 'Scary Words' },
+    { href: '/references', label: 'References' },
   ];
 
   return (

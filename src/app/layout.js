@@ -1,4 +1,10 @@
-import { Geist, Geist_Mono, Amatic_SC, Rubik } from "next/font/google";
+import { 
+  Geist, 
+  Geist_Mono, 
+  Amatic_SC, 
+  Rubik, 
+  Source_Code_Pro 
+} from "next/font/google";
 import "../../styles/globals.css";
 
 const geistSans = Geist({
@@ -23,6 +29,12 @@ const rubik = Rubik({
   variable: '--font-rubik',
 });
 
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-source-code-pro',
+});
+
 export const metadata = {
   title: "The Horror Map",
   description: "Tips and Techniques for Horror Fiction Writing",
@@ -32,7 +44,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${amatic.variable} ${rubik.variable} antialiased`}
+        className={`
+        ${geistSans.variable} 
+        ${geistMono.variable} 
+        ${amatic.variable} 
+        ${rubik.variable} 
+        ${sourceCodePro.variable} 
+        antialiased`}
       >
         {children}
       </body>

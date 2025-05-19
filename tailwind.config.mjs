@@ -13,6 +13,8 @@ export default {
       },
       fontFamily: {
         'amatic-sc': ['var(--font-amatic-sc)', 'cursive'],
+        'source-code-pro': ['var(--font-source-code-pro)', 'monospace'],
+        'rubik': ['var(--font-rubik)', 'sans-serif'],
       },
     },
   },

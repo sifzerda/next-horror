@@ -11,7 +11,8 @@ function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
-    { href: '/references', label: 'References' },
+    { href: '/signup', label: 'Signup' },
+    { href: '/login', label: 'Login' },
   ];
 
   return (

@@ -39,40 +39,68 @@ function Techniques() {
         {/* Text Column */}
         <div className="flex-1">
           <h3 className="text-xl font-bold mb-2">About the Techniques</h3>
+
+          <h2 id="home">Home</h2>
+
           <p className="text-sm mb-4 font-rubik">
             These horror techniques leverage language, pacing, and atmosphere to provoke emotional and psychological responses.
             Carefully chosen words and imagery distort what’s familiar, creating unease and suspense in the reader’s mind.
           </p>
+
+          <h2 id="blog">Blog</h2>
+
           <p className="text-sm font-rubik">
             Below are key elements often used in horror storytelling to enhance tension and unsettle the audience.
           </p>
+
+          <h2 id="contact">Contact</h2>
+
+          {/* Back to Top Link */}
+          <a href="#" className="mt-6 inline-block px-4 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition">Back to Top</a>
+
         </div>
 
         {/* Vertical Boxes on the Right */}
-<div className="flex flex-col gap-4">
-  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
-    <div className="font-semibold mb-1">About</div>
-    <p className="text-xs mt-1">Learn more about our story and mission.</p>
-  </div>
+        <div className="flex flex-col gap-4">
+          {/* About Box */}
+          <div className="w-36 bg-gray-800 border border-white text-white flex flex-col items-start justify-center rounded shadow p-4 text-left">
+            <div className="font-semibold mb-1 text-red-500">About</div>
+            <p className="font-source-code-pro text-xs mt-1">Learn more about our story and mission.</p>
+          </div>
 
-  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
-    <div className="font-semibold mb-1">Index</div>
-    <ul className="flex flex-col list-disc list-inside text-xs leading-tight">
-      <li className="mb-px">Home</li>
-      <li className="mb-px">Blog</li>
-      <li className="mb-px">Contact</li>
-    </ul>
-  </div>
+          {/* Index Box */}
+          <div className="w-36 bg-gray-800 border border-white text-white flex flex-col items-start justify-center rounded shadow p-4 text-left">
+            <div className="font-semibold mb-1 text-red-500">Index</div>
+            <ol className="font-source-code-pro flex flex-col list-disc list-inside text-xs leading-tight">
+              <li className="mb-px">
+                <a href="#home" className="hover:underline">Home</a>
+              </li>
+              <li className="mb-px">
+                <a href="#blog" className="hover:underline">Blog</a>
+              </li>
+              <li className="mb-px">
+                <a href="#contact" className="hover:underline">Contact</a>
+              </li>
+            </ol>
+          </div>
 
-  <div className="w-32 bg-white text-black flex flex-col items-start justify-center rounded shadow p-4 text-left">
-    <div className="font-semibold mb-1">Also See</div>
-    <ul className="flex flex-col list-disc list-inside text-xs leading-tight">
-      <li className="mb-px">Resources</li>
-      <li className="mb-px">FAQ</li>
-      <li className="mb-px">Support</li>
-    </ul>
-  </div>
-</div>
+          {/* Also See Box */}
+          <div className="w-36 bg-gray-800 border border-white text-white flex flex-col items-start justify-center rounded shadow p-4 text-left">
+            <div className="font-semibold mb-1 text-red-500">Also See</div>
+            <ol className="font-source-code-pro flex flex-col list-disc list-inside text-xs leading-tight">
+              <li className="mb-px">
+                <a href="/types" className="hover:underline">Types</a>
+              </li>
+              <li className="mb-px">
+                <a href="/scarywords" className="hover:underline">Scary Words</a>
+              </li>
+              <li className="mb-px">
+                <a href="/tropes" className="hover:underline">Tropes</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+
 
       </section>
 
