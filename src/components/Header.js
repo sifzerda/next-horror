@@ -7,7 +7,7 @@ function Header() {
   return (
     <header
       role="banner"
-      className="w-full h-12 bg-gray-700 text-white px-6 flex items-center justify-between fixed top-0 left-0 z-40 sm:pl-64"
+      className="w-full h-12 bg-black text-white px-6 flex items-center justify-between fixed top-0 left-0 z-40 sm:pl-64"
     >
       <div className="flex items-center gap-2 h-full">
         <div className="relative h-full w-8"> 

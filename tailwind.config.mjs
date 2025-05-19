@@ -10,6 +10,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        minty: '#cefff4',
+        lred: '#f02652',
+        midblue: '#006eff',
+        boldpurple: '#4845fd', 
+        borderblue: '#062c4c',
       },
       fontFamily: {
         'amatic-sc': ['var(--font-amatic-sc)', 'cursive'],

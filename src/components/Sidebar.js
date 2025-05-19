@@ -19,7 +19,7 @@ function Sidebar() {
   return (
     <aside
       role="complementary"
-      className="w-full bg-gray-800 text-white p-4 z-10 flex flex-col items-center gap-4 sm:w-64 sm:h-screen sm:fixed sm:top-0 sm:left-0 sm:items-start sm:pt-28">
+      className="w-full bg-black text-white p-4 z-10 flex flex-col items-center gap-4 sm:w-64 sm:h-screen sm:fixed sm:top-0 sm:left-0 sm:items-start sm:pt-28 sm:border-r-2 sm:border-borderblue">
       <nav className="w-full">
         <ul className="flex flex-col items-center gap-4 sm:items-start sm:pl-6 sm:mt-6">
           {links.map(({ href, label }) => (
