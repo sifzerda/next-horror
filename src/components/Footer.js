@@ -11,7 +11,7 @@ function Footer() {
             href="https://react-td-portfolio.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline text-white"
           >
             <Image src="/mammal.svg" alt="Mammal" width={16} height={16} />
             sifzerda
@@ -22,7 +22,7 @@ function Footer() {
             href="https://github.com/sifzerda/next-horror"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline text-white"
           >
             <Image src="/github.svg" alt="Github" width={16} height={16} />
             2025
