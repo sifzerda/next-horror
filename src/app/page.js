@@ -1,22 +1,23 @@
 import Image from "next/image";
-import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 import Navigation from "../components/Navigation";
+import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
-      <Navigation /> {/* fixed height at top */}
-
+      <Header />
+      <Navigation />
       {/* Main content wrapper */}
-      <div className="flex flex-col sm:flex-row pt-16">
+      <div className="flex flex-col sm:flex-row pt-28">
         {/* Sidebar with natural height */}
-        <aside className="w-full sm:w-64 bg-gray-100 dark:bg-gray-900 p-6">
+        <aside role="complementary" aria-label="Sidebar" className="w-full sm:w-64 bg-gray-100 dark:bg-gray-900 p-6">
           <Sidebar />
         </aside>
 
         {/* Main content grows */}
-        <main className="flex-1 p-4 sm:px-6 flex flex-col gap-8 items-center sm:items-start">
+        <main role="main" className="flex-1 p-4 sm:px-6 flex flex-col gap-8 items-center sm:items-start">
           <Image
             className="dark:invert"
             src="/next.svg"
@@ -24,6 +25,7 @@ export default function Home() {
             width={180}
             height={38}
             priority
+            sizes="(max-width: 640px) 100px, 180px"
           />
 
           <ol className="list-inside list-decimal text-sm text-center sm:text-left font-mono">

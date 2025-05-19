@@ -1,27 +1,33 @@
 // src/components/Navigation.js
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function Navigation() {
+  const pathname = usePathname();
+
+  const links = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/references', label: 'References' },
+  ];
+
   return (
     <nav
-      className="
-        w-full bg-gray-900 text-white px-6 py-4 fixed top-0 left-0 z-30
-        sm:pl-64
-      "
-    >
-      <ul className="flex flex-wrap gap-4 justify-center">
-        <li>
-          <Link href="/" className="hover:text-gray-400">Home</Link>
-        </li>
-        <li>
-          <Link href="/about" className="hover:text-gray-400">About</Link>
-        </li>
-        <li>
-          <Link href="/contact" className="hover:text-gray-400">Contact</Link>
-        </li>
-        <li>
-          <Link href="/references" className="hover:text-gray-400">References</Link>
-        </li>
+      role="navigation"
+      className="fixed top-12 left-0 w-full h-16 z-30 bg-gray-900 text-white px-6 sm:pl-64">
+      <ul className="flex flex-wrap gap-4 justify-center items-center h-full">
+        {links.map(({ href, label }) => (
+          <li key={href}>
+            <Link
+              href={href}
+              className={`hover:text-gray-400 ${pathname === href ? 'underline font-semibold' : ''}`}>
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

@@ -4,7 +4,7 @@ to do
   - [ ] colours
   - [ ] links/nav
 - [ ] add header component 
-- [ ] footer content
+- [x] footer content
 - [ ] page elements (title/quote/banner/text sections)
 
 
