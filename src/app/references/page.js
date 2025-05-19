@@ -1,10 +1,14 @@
-// src/app/references.js
+// src/pages/references.js
+import Layout from '../../components/Layout';
 
-export default function References() {
-    return (
-      <div>
-        <h1>References</h1>
-        <p>This is the references page.</p>
-      </div>
-    );
-  }
+function References() {
+  return (
+    <Layout>
+      <h1 className="text-2xl font-bold mb-4">References</h1>
+      <p>If you have questions, please reach out!</p>
+      {/* Add your contact form or details here */}
+    </Layout>
+  );
+}
+
+export default References;

@@ -12,6 +12,10 @@ function Sidebar() {
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
     { href: '/references', label: 'References' },
+        { href: '/scary words', label: 'Scary Words' },
+    { href: '/techniques', label: 'Techniques' },
+    { href: '/tropes', label: 'Tropes' },
+    { href: '/types', label: 'Types' },
   ];
 
   return (

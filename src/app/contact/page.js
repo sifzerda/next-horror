@@ -1,10 +1,14 @@
-// src/app/contact.js
+// src/pages/contact.js
+import Layout from '../../components/Layout';
 
-export default function Contact() {
-    return (
-      <div>
-        <h1>Contact</h1>
-        <p>This is the contact page.</p>
-      </div>
-    );
-  }
+function Contact() {
+  return (
+    <Layout>
+      <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
+      <p>If you have questions, please reach out!</p>
+      {/* Add your contact form or details here */}
+    </Layout>
+  );
+}
+
+export default Contact;

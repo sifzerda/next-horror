@@ -1,15 +1,14 @@
-// pages/about.js
-import '../../../styles/globals.css'
-import Navigation from '../../components/Navigation';
+// src/pages/scary words.js
+import Layout from '../../components/Layout';
 
-export default function About() {
-    return (
-      <div>
+function Techniques() {
+  return (
+    <Layout>
+      <h1 className="text-2xl font-bold mb-4">Techniques</h1>
+      <p>If you have questions, please reach out!</p>
+      {/* Add your contact form or details here */}
+    </Layout>
+  );
+}
 
-<Navigation />
-
-        <h1>About Us</h1>
-        <p>This is the about page.</p>
-      </div>
-    );
-  }
+export default Techniques;
