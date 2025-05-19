@@ -17,7 +17,7 @@ export default function Home() {
         </aside>
 
         {/* Main content grows */}
-        <main role="main" className="flex-1 p-4 sm:px-6 flex flex-col gap-8 items-center sm:items-start">
+       <main role="main" className="flex-1 p-4 sm:px-6 flex flex-col gap-8 items-center justify-center text-center sm:items-center sm:text-left">
           <Image
             className="dark:invert"
             src="/next.svg"
