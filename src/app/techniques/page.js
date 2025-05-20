@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import CommentForm from '../../components/CommentForm';
 import CommentList from '../../components/CommentList';
 import Image from "next/image";
+import techBanner from "../assets/techbanner.jpg";
 
 async function Techniques() {
   const session = await auth();
@@ -33,8 +34,8 @@ async function Techniques() {
       {/* 2nd Banner Box with Image */}
       <div className="bg-transparent border border-white rounded-b-md overflow-hidden w-full max-w-screen-xl mx-auto shadow -mt-8">
         <Image
-          src="/your-image.jpg" // Replace with actual path
-          alt="Atmospheric horror background"
+          src={techBanner} // Replace with actual path
+          alt="Zombies against a red moon background"
           width={1600}
           height={400}
           className="w-full h-auto object-cover"
