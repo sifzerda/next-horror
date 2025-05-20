@@ -2,12 +2,12 @@
 to do 
 - [ ] add basic formatting:
   - [ ] colours
-  - [ ] links/nav
+  - [x] links/nav
 - [x] add header component 
 - [x] footer content
 - [ ] page elements (title/quote/banner/text sections)
 
-- [ ] create postgres (or other serverless db) db for signed up users to enable login
+- [x] create postgres (or other serverless db) db for signed up users to enable login
 - [ ] also record signed up users comments
 
 

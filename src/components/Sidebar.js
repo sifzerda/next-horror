@@ -26,7 +26,7 @@ function Sidebar() {
             <li key={href}>
               <Link
                 href={href}
-                className={`hover:text-gray-400 ${pathname === href ? 'underline font-semibold' : ''}`}>
+                className={`hover:text-red-500 ${pathname === href ? 'underline font-semibold' : ''}`}>
                 {label}
               </Link>
             </li>

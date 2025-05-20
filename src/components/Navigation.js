@@ -50,14 +50,14 @@ function Navigation() {
               // For logout, use a button or <a> with click handler
               <button
                 onClick={onClick}
-                className="border border-borderblue px-1 py-1 rounded hover:text-gray-400 hover:border-gray-400 transition cursor-pointer bg-transparent text-white"
+                className="border border-borderblue px-1 py-1 rounded hover:text-minty hover:border-gray-400 transition cursor-pointer bg-transparent text-white"
               >
                 {label}
               </button>
             ) : (
               <Link
                 href={href}
-                className={`border border-borderblue px-1 py-1 rounded hover:text-gray-400 hover:border-gray-400 transition ${
+                className={`border border-borderblue px-1 py-1 rounded hover:text-minty hover:border-gray-400 transition ${
                   pathname === href ? 'underline font-semibold' : ''
                 }`}
               >
