@@ -1,12 +1,12 @@
 // src/app/techniques.js
-import { getSession } from "../../lib/auth";
+import { auth } from "../../auth.ts";
 import Layout from '../../components/Layout';
 import CommentForm from '../../components/CommentForm';
 import CommentList from '../../components/CommentList';
 import Image from "next/image";
 
 async function Techniques() {
-  const session = await getSession();
+  const session = await auth();
   console.log("🧪 Server SESSION:", session);
   const userId = session?.user?.id || null;
   console.log("🧠 Extracted userId:", userId);

@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Layout from '../../components/Layout';
+import { signIn } from 'next-auth/react';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -22,7 +23,17 @@ function Signup() {
     const text = await res.text(); // Read response as text
     const data = text ? JSON.parse(text) : {};
 
-    setMessage(data.message || data.error || 'Unknown error');
+if (res.ok) {
+      // Auto sign-in using credentials
+      const result = await signIn('credentials', {
+        redirect: true,
+        email,
+        password,
+        callbackUrl: '/', // or wherever you want to send them
+      });
+    } else {
+      setMessage(data.message || data.error || 'Signup failed.');
+    }
   } catch (err) {
     setMessage('Signup failed. Please try again.');
     console.error('Signup error:', err);

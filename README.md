@@ -28,9 +28,9 @@ ENV
 TAILWIND
 ESLINT
 
-nextAuth
-Google Search Console or credentials
-Google Provider or OAuth
+nextAuth + Credentials Provider  (instead of paid OAuth service)
+~~Google Search Console or credentials~~
+
 
 JWT
 [Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)
