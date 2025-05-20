@@ -1,8 +1,16 @@
-// src/app/scary words.js
+// src/app/techniques.js
+import { getSession } from "../../lib/auth";
 import Layout from '../../components/Layout';
+import CommentForm from '../../components/CommentForm';
+import CommentList from '../../components/CommentList';
 import Image from "next/image";
 
-function Techniques() {
+async function Techniques() {
+  const session = await getSession();
+  console.log("🧪 Server SESSION:", session);
+  const userId = session?.user?.id || null;
+  console.log("🧠 Extracted userId:", userId);
+
   return (
     <Layout>
       {/* 1st Banner Box */}
@@ -58,6 +66,22 @@ function Techniques() {
           {/* Back to Top Link */}
           <a href="#" className="mt-6 inline-block px-4 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition">Back to Top</a>
 
+
+          <h1 className="text-2xl font-bold mb-4">Leave a Comment</h1>
+          {userId ? (
+            <>
+              {console.log("✅ Rendering CommentForm for user:", userId)}
+              <CommentForm userId={userId} />
+            </>
+          ) : (
+            <>
+              {console.log("🚫 User not logged in or no user ID found")}
+              <p className="text-red-500">Please log in to leave a comment.</p>
+            </>
+          )}
+
+          <CommentList />
+
         </div>
 
         {/* Vertical Boxes on the Right */}
@@ -99,6 +123,7 @@ function Techniques() {
               </li>
             </ol>
           </div>
+
         </div>
 
 

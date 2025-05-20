@@ -33,29 +33,24 @@ export default function Login() {
   return (
     <Layout>
       <h1 className="text-2xl font-bold mb-4">Login</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-sm">
+        <input
+          type="email"
+          placeholder="Email"
+          className="border p-2 rounded text-black placeholder-gray-400"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-        <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
-          <input
-            type="email"
-            className="w-full border border-gray-300 rounded p-2"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">Password</label>
-          <input
-            type="password"
-            className="w-full border border-gray-300 rounded p-2"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="password"
+          placeholder="Password"
+          className="border p-2 rounded text-black placeholder-gray-400"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
         <button
           type="submit"

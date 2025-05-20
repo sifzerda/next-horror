@@ -10,7 +10,7 @@ to do
 - [x] create postgres (or other serverless db) db for signed up users to enable login
 - [ ] also record signed up users comments
 
-
+- [ ] integrate NextAuth
 
 
 
@@ -27,6 +27,10 @@ TYPESCRIPT
 ENV
 TAILWIND
 ESLINT
+
+nextAuth
+Google Search Console or credentials
+Google Provider or OAuth
 
 JWT
 [Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)
