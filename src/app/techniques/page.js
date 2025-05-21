@@ -58,14 +58,13 @@ async function Techniques() {
 
           <h2 id="contact">Contact</h2>
 
-          {/* Back to Top Link */}
-          <a href="#" className="mt-6 inline-block px-4 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition">Back to Top</a>
-
-
           <h1 className="text-2xl font-bold mb-4">Leave a Comment</h1>
 
           <CommentForm />
           <CommentList />
+
+          {/* Back to Top Link */}
+          <a href="#" className="mt-6 inline-block px-4 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition">Back to Top</a>
 
         </div>
 

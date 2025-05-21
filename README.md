@@ -10,9 +10,11 @@ to do
 - [x] create postgres (or other serverless db) db for signed up users to enable login
 - [ ] also record signed up users comments
 
-- [x] integrate Authentication: inside lib folder (auth.js and serverAuth.js)
+- [x] integrate DIY Authentication: inside lib folder (auth.js and serverAuth.js)
+- [x] get commenting submission and retrieval
 
-
+- [ ] add next-fiction url to nav link once deployed
+- [ ] add dynamic footnotes
 
 
 

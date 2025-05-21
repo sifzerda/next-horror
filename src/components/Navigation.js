@@ -17,7 +17,7 @@ function Navigation() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    // Optionally redirect after logout
+    // redirect after logout
     window.location.href = '/';
   };
 
@@ -26,9 +26,10 @@ function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
+    { href: '/', label: 'Fiction Map' },
   ];
 
-    // Add auth links conditionally
+  // Auth links conditional
   if (isLoggedIn) {
     links.push({ href: '#', label: 'Logout', onClick: handleLogout });
   } else {
@@ -57,9 +58,8 @@ function Navigation() {
             ) : (
               <Link
                 href={href}
-                className={`border border-borderblue px-1 py-1 rounded hover:text-minty hover:border-gray-400 transition ${
-                  pathname === href ? 'underline font-semibold' : ''
-                }`}
+                className={`border border-borderblue px-1 py-1 rounded hover:text-minty hover:border-gray-400 transition ${pathname === href ? 'underline font-semibold' : ''
+                  }`}
               >
                 {label}
               </Link>
