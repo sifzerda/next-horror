@@ -2,43 +2,44 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Layout from '../../components/Layout';
-import { signIn } from 'next-auth/react';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-  try {
-    const res = await fetch('/api/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const text = await res.text(); // Read response as text
-    const data = text ? JSON.parse(text) : {};
-
-if (res.ok) {
-      // Auto sign-in using credentials
-      const result = await signIn('credentials', {
-        redirect: true,
-        email,
-        password,
-        callbackUrl: '/', // or wherever you want to send them
+    try {
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       });
-    } else {
-      setMessage(data.message || data.error || 'Signup failed.');
+
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+
+      if (res.ok) {
+        // Store JWT in localStorage
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+
+        // Redirect user
+        router.push('/dashboard');
+      } else {
+        setMessage(data.message || data.error || 'Signup failed.');
+      }
+    } catch (err) {
+      setMessage('Signup failed. Please try again.');
+      console.error('Signup error:', err);
     }
-  } catch (err) {
-    setMessage('Signup failed. Please try again.');
-    console.error('Signup error:', err);
   }
-}
 
   return (
     <Layout>
@@ -64,7 +65,7 @@ if (res.ok) {
           Sign Up
         </button>
       </form>
-      {message && <p className="mt-4">{message}</p>}
+      {message && <p className="mt-4 text-red-500">{message}</p>}
     </Layout>
   );
 }

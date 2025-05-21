@@ -1,18 +1,15 @@
-import { prisma } from '../../../../lib/prisma'; 
+import { prisma } from '../../../../lib/prisma';
 import { NextResponse } from 'next/server';
-import { auth } from "../../../auth.ts";
+import { getUserFromRequest } from '../../../../lib/serverAuth';
 
 export async function POST(req) {
-   try {
-    // Get the current logged-in user session
-    const session = await auth();
-
-    if (!session || !session.user?.id) {
+  try {
+    const user = await getUserFromRequest(req);
+    if (!user || !user.sub) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const { content } = await req.json();
-
     if (!content) {
       return NextResponse.json({ error: 'Missing comment content' }, { status: 400 });
     }
@@ -20,7 +17,7 @@ export async function POST(req) {
     const comment = await prisma.comment.create({
       data: {
         content,
-        userId: session.user.id, // use user ID from session only!
+        userId: user.sub,
       },
     });
 
@@ -34,12 +31,8 @@ export async function POST(req) {
 export async function GET() {
   try {
     const comments = await prisma.comment.findMany({
-      include: {
-        user: true,
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      include: { user: true },
+      orderBy: { createdAt: 'desc' },
     });
 
     return NextResponse.json(comments, { status: 200 });

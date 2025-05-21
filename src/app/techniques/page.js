@@ -69,17 +69,8 @@ async function Techniques() {
 
 
           <h1 className="text-2xl font-bold mb-4">Leave a Comment</h1>
-          {userId ? (
-            <>
-              {console.log("✅ Rendering CommentForm for user:", userId)}
-              <CommentForm userId={userId} />
-            </>
-          ) : (
-            <>
-              {console.log("🚫 User not logged in or no user ID found")}
-              <p className="text-red-500">Please log in to leave a comment.</p>
-            </>
-          )}
+
+          <CommentForm />
 
           <CommentList />
 

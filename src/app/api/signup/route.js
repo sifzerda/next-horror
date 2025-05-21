@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
-import { prisma } from '../../../../lib/prisma';
+import { prisma } from '@/lib/prisma';
+import { signJWT } from '@/lib/auth';
 
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -27,26 +28,24 @@ export async function POST(req) {
       return jsonResponse({ error: 'Password must be at least 8 characters' }, 400);
     }
 
-    // 🔍 Check if user already exists in the database
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
-
+    const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
       return jsonResponse({ error: 'User already exists' }, 400);
     }
 
-    // 🔐 Hash the password and store new user
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         email,
         password: hashedPassword,
       },
     });
 
-    return jsonResponse({ message: 'User created successfully' }, 201);
+    // Automatically sign a token after successful signup
+    const token = await signJWT({ sub: user.id, email: user.email });
+
+    return jsonResponse({ message: 'User created successfully', token }, 201);
   } catch (error) {
     console.error('Signup error:', error);
     return jsonResponse({ error: 'Internal server error' }, 500);
