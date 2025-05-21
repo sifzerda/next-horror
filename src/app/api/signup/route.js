@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/prisma';
 import { signJWT } from '../../../../lib/auth';
 

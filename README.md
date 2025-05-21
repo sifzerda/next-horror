@@ -16,10 +16,12 @@ to do
 - [ ] add next-fiction url to nav link once deployed
 - [ ] add dynamic footnotes
 
+- [ ] add SEO elements; e.g. next.config.mjs
+- [ ] test app using lighthouse, optimize scores
 
 
 
-using vercel neon db
+using vercel neon db - neon red
 
 HTML
 CSS
@@ -149,7 +151,7 @@ Other css you can use with Next:
 
 ## SHARING LAYOUT BETWEEN PAGES
 
-Anytime you want to share layout between pages, you can make a layout.tsx page to bring in shared components, e.g. a navbar, header, footer, etc. Anything that will display on multiple pages.
+Anytime you want to share layout between pages, you can make a layout.ts(x)/js page to bring in shared components, e.g. a navbar, header, footer, etc. Anything that will display on multiple pages.
 
 In this app, the components are stored inside app/ui/dashboard.
 
@@ -169,16 +171,13 @@ Next.js can work serverless (it has built-in next-start server support). Vercel 
 npm i @vercel/postgres
 ```
 to install the Vercel Postgres SDK.
-
-7. go to vercel dashboard, under 'storage' select and create a db. e.g. neon postgres serverless. 
-8. copy the connection string info and paste into an .env in your root folder of app
-9. 
+7. 
 ```bash
 npm install prisma @prisma/client
 npx prisma init
 ```
 this will create a root folder called prisma containing a schema.prisma file
-10. Update your prisma schema with any models you want to create e.g.
+8. Update your prisma schema with any models you want to create e.g.
 ```bash
 generator client {
   provider = "prisma-client-js"
@@ -204,9 +203,11 @@ install
 ```bash
 npm install @prisma/client
 ```
-11. Create a root folder called lib, and make a prisma.js file inside. Paste:
+this will create a 'generated' folder inside src
+
+9. Create a root folder called lib, and make a prisma.js file inside which references generated folder. Paste:
 ```bash
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../src/generated/prisma';
 
 const globalForPrisma = globalThis;
 
@@ -214,32 +215,18 @@ export const prisma = globalForPrisma.prisma || new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
+export { prisma };
+
 ```
-12. If routes or pages enter data into or from the db, you need to import prisma into the page, e.g.
+10. If routes or pages enter data into or from the db, you need to import prisma into the page, e.g.
 ```bash
 import { prisma } from '../lib/prisma';
 ```
-alter pathname to where your lib folder is.
+alter pathname to where your lib/prisma.js is.
 
 ## TO DEPLOY
 
 ### Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-## TO SET UP A DB
-
-Next.js can work serverless (it has built-in next-start server support). Vercel provides dbs: 
-(1) first deploy on Vercel;
-(2) Navigate to your app's dashboard;
-(3) Navigate to 'storage' tab and choose a db (e.g. Neon Vercel Postgres);
-(4) Once db is connected, 'show secret' under .env.local and 'copy snippet';
-(5) Paste this into an .env file in your code editor
-(6) in code editor terminal run:
-
-```bash
-npm i @vercel/postgres
-```
-
-to install the Vercel Postgres SDK.
 
