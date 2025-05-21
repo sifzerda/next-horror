@@ -59,7 +59,7 @@ const res = await fetch('/api/comments', {
 
 if (!user) {
   return (
-    <div>
+    <div className="bg-minty text-black px-4 py-2 rounded">
       <p>Please log in to leave a comment.</p>
     </div>
   );
