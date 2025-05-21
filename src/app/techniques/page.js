@@ -1,5 +1,4 @@
 // src/app/techniques.js
-import { auth } from "../../auth.ts";
 import Layout from '../../components/Layout';
 import CommentForm from '../../components/CommentForm';
 import CommentList from '../../components/CommentList';
@@ -7,11 +6,6 @@ import Image from "next/image";
 import techBanner from "../assets/techbanner.jpg";
 
 async function Techniques() {
-  const session = await auth();
-  console.log("🧪 Server SESSION:", session);
-  const userId = session?.user?.id || null;
-  console.log("🧠 Extracted userId:", userId);
-
   return (
     <Layout>
       {/* 1st Banner Box */}
@@ -71,7 +65,6 @@ async function Techniques() {
           <h1 className="text-2xl font-bold mb-4">Leave a Comment</h1>
 
           <CommentForm />
-
           <CommentList />
 
         </div>

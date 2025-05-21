@@ -5,8 +5,17 @@ import { useState, useEffect } from 'react';
 
 function decodeJWT(token) {
   try {
-    return JSON.parse(atob(token.split('.')[1]));
-  } catch {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const payload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)
+        .join('')
+    );
+    return JSON.parse(payload);
+  } catch (err) {
+    console.error('❌ Failed to decode JWT:', err);
     return null;
   }
 }
@@ -19,13 +28,20 @@ function CommentForm() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
+      console.warn("⚠️ No token found in localStorage.");
       setUser(null);
       return;
     }
 
     // Optionally, decode the token client-side to get user info
     const decoded = decodeJWT(token);
-    setUser(decoded ? { id: decoded.sub, email: decoded.email } : null);
+    if (decoded) {
+      console.log("✅ Decoded JWT:", decoded);
+      setUser({ id: decoded.userId, email: decoded.email }); // assuming your JWT has `userId`
+    } else {
+      console.error("❌ Invalid JWT.");
+      setUser(null);
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -49,11 +65,11 @@ const res = await fetch('/api/comments', {
     });
 
     if (res.ok) {
-      setMessage('Comment submitted!');
+      setMessage('✅ Comment submitted!');
       setContent('');
     } else {
       const data = await res.json();
-      setMessage(data.error || 'Submission failed');
+      setMessage(data.error || '❌ Submission failed');
     }
   };
 
