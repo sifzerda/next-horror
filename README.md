@@ -28,9 +28,8 @@ ENV
 TAILWIND
 ESLINT
 bcrypt
-jose : library which handles JWTs
+jose : library which generates and handles JWTs
 DIY Auth
-- potentially can upgrade from DIY authentication system to KeyCloak (in future)
 
 ~~nextAuth + Credentials Provider  (instead of paid OAuth service)~~
 ~~Google Search Console or credentials~~
