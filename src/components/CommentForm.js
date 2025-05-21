@@ -57,9 +57,13 @@ const res = await fetch('/api/comments', {
     }
   };
 
-  if (!user) {
-    return <p>Please log in to leave a comment.</p>;
-  }
+if (!user) {
+  return (
+    <div>
+      <p>Please log in to leave a comment.</p>
+    </div>
+  );
+}
 
   return (
     <form onSubmit={handleSubmit} className="space-y-2">
