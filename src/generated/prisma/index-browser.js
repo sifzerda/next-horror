@@ -124,10 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
-  createdAt: 'createdAt',
-  name: 'name',
-  emailVerified: 'emailVerified',
-  image: 'image'
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.CommentScalarFieldEnum = {
@@ -135,34 +132,6 @@ exports.Prisma.CommentScalarFieldEnum = {
   content: 'content',
   createdAt: 'createdAt',
   userId: 'userId'
-};
-
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  type: 'type',
-  provider: 'provider',
-  providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state'
-};
-
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sessionToken: 'sessionToken',
-  userId: 'userId',
-  expires: 'expires'
-};
-
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
 };
 
 exports.Prisma.SortOrder = {
@@ -175,18 +144,10 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Comment: 'Comment',
-  Account: 'Account',
-  Session: 'Session',
-  VerificationToken: 'VerificationToken'
+  Comment: 'Comment'
 };
 
 /**

@@ -10,7 +10,7 @@ to do
 - [x] create postgres (or other serverless db) db for signed up users to enable login
 - [ ] also record signed up users comments
 
-- [ ] integrate NextAuth
+- [x] integrate Authentication: inside lib folder (auth.js and serverAuth.js)
 
 
 
@@ -28,9 +28,9 @@ ENV
 TAILWIND
 ESLINT
 bcrypt
-jose 
+jose : library which handles JWTs
 DIY Auth
-
+- potentially can upgrade from DIY authentication system to KeyCloak (in future)
 
 ~~nextAuth + Credentials Provider  (instead of paid OAuth service)~~
 ~~Google Search Console or credentials~~
