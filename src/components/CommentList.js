@@ -33,7 +33,7 @@ function CommentList() {
         <div key={comment.id} className="border p-4 rounded shadow-sm">
           <p className="text-white">{comment.content}</p>
           <p className="text-sm text-red-500 mt-2">
-            By {comment.user?.email || 'Anonymous'} on{' '}
+            By {comment.user?.username || 'Anonymous'} on{' '}
             {new Date(comment.createdAt).toLocaleString()}
           </p>
         </div>

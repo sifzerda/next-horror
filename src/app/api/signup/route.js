@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/prisma';
-import { signJWT } from '@/lib/auth';
+import { prisma } from '../../../../lib/prisma';
+import { signJWT } from '../../../../lib/auth';
 
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -14,9 +14,9 @@ function jsonResponse(body, status = 200) {
 
 export async function POST(req) {
   try {
-    const { email, password } = await req.json();
+    const { email, password, username } = await req.json();
 
-    if (!email || !password) {
+    if (!email || !password || !username) {
       return jsonResponse({ error: 'Email and password are required' }, 400);
     }
 
@@ -26,6 +26,11 @@ export async function POST(req) {
 
     if (password.length < 8) {
       return jsonResponse({ error: 'Password must be at least 8 characters' }, 400);
+    }
+
+    const existingUsername = await prisma.user.findUnique({ where: { username } });
+    if (existingUsername) {
+      return NextResponse.json({ error: 'Username already taken' }, { status: 400 });
     }
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -39,11 +44,12 @@ export async function POST(req) {
       data: {
         email,
         password: hashedPassword,
+        username,
       },
     });
 
     // Automatically sign a token after successful signup
-    const token = await signJWT({ sub: user.id, email: user.email });
+    const token = await signJWT({ sub: user.id, email: user.email, username: user.username }, { expiresIn: '1h' });
 
     return jsonResponse({ message: 'User created successfully', token }, 201);
   } catch (error) {
