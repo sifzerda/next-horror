@@ -55,7 +55,7 @@ function CommentForm() {
 
     const token = localStorage.getItem('token');
 
-const res = await fetch('/api/comments', {
+    const res = await fetch('/api/comments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,19 +67,21 @@ const res = await fetch('/api/comments', {
     if (res.ok) {
       setMessage('✅ Comment submitted!');
       setContent('');
+      // Refresh the page automatically:
+      window.location.reload();
     } else {
       const data = await res.json();
       setMessage(data.error || '❌ Submission failed');
     }
   };
 
-if (!user) {
-  return (
-    <div className="bg-minty text-black px-4 py-2 rounded">
-      <p>Please log in to leave a comment.</p>
-    </div>
-  );
-}
+  if (!user) {
+    return (
+      <div className="bg-minty text-black px-4 py-2 rounded">
+        <p>Please log in to leave a comment.</p>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-2">
