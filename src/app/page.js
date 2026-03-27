@@ -38,7 +38,7 @@ function Home() {
           <h2 id="home">Home</h2>
 
           <p className="text-sm mb-4 font-rubik">
-            This is a smaller sibling blog to my other site Fiction Map. It's a resource
+            This is a smaller sibling blog to my other site Fiction Map. It&lsquo;s a resource
             for writers looking to improve their craft and write scarier, better horror stories.
           </p>
 
