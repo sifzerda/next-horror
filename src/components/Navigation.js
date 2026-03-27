@@ -23,8 +23,7 @@ function Navigation() {
 
   // Base links
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'About' },
     { href: '/contact', label: 'Contact' },
     { href: '/', label: 'Fiction Map' },
   ];

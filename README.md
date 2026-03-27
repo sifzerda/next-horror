@@ -81,7 +81,7 @@ Default (Vite):
 
 Optional:
 + styles (put css in here)
-+ src/pages (put pages in here)
++ src/pages (put pages in here if using a pages router)
 + src/components
 + src/utils
 
@@ -180,12 +180,11 @@ this will create a root folder called prisma containing a schema.prisma file
 8. Update your prisma schema with any models you want to create e.g.
 ```bash
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -203,11 +202,17 @@ install
 ```bash
 npm install @prisma/client
 ```
-this will create a 'generated' folder inside src
+this will create a 'generated' folder inside src (if you have src) otherwise:
 
-9. Create a root folder called lib, and make a prisma.js file inside which references generated folder. Paste:
 ```bash
-import { PrismaClient } from '../src/generated/prisma';
+npx prisma generate
+```
+
+this will create a generated folder inside 'app'
+
+9. Create a root folder called lib, and make a prisma.js file inside which references generated folder (depending on whether src or app) Paste:
+```bash
+import { PrismaClient } from '../src/generated/prisma'; 
 
 const globalForPrisma = globalThis;
 
