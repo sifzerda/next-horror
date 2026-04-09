@@ -42,3 +42,57 @@ ul {
 html {
   scroll-behavior: smooth;
 }
+
+/* ============================================ */
+/* Gothic Horror Animations for Header/Footer   */
+/* ============================================ */
+
+/* Slow vertical fade for fog/smoke */
+@keyframes fade-slow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateY(-5px);
+  }
+}
+
+.animate-fade-slow {
+  animation: fade-slow 8s infinite ease-in-out;
+}
+
+/* Flickering red glow effect */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255,0,0,0.6), 0 0 10px rgba(255,0,0,0.4);
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.7;
+    text-shadow: 0 0 2px rgba(255,0,0,0.3);
+  }
+}
+
+.flicker {
+  animation: flicker 2s infinite;
+}
+
+/* Optional: glow on hover for links */
+.glow-hover:hover {
+  text-shadow: 0 0 8px rgba(255,0,0,0.8), 0 0 15px rgba(255,0,0,0.5);
+  color: #ff1a1a;
+  transition: all 0.3s ease-in-out;
+}
+
+/* under construction banner */
+
+@keyframes slide-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+.animate-slide-stripes {
+  animation: slide-stripes 2s linear infinite;
+}

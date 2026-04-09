@@ -1,16 +1,17 @@
-import { 
-  Geist, 
-  Geist_Mono, 
-  Amatic_SC, 
-  Rubik, 
-  Source_Code_Pro 
+import {
+  Geist,
+  Geist_Mono,
+  Amatic_SC,
+  Rubik,
+  Source_Code_Pro
 } from "next/font/google";
 import "../../styles/globals.css";
 
 import Header from "../components/Header";
-import Navigation from "../components/Navigation";
+//import Navigation from "../components/Navigation";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import UCBanner from "../components/UnderConstruction";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ const amatic = Amatic_SC({
 
 const rubik = Rubik({
   subsets: ['latin'],
-  weight: ['400', '500'], 
+  weight: ['400', '500'],
   variable: '--font-rubik',
 });
 
@@ -49,8 +50,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+
         <Header />
-        <Navigation />
+        {/*      <Navigation />   */}
+
+        {/* Construction banner */}
+        <UCBanner />
 
         <div className="flex flex-col sm:flex-row pt-28">
           <aside className="w-full sm:w-64 bg-gray-100 dark:bg-gray-900 p-6">
